@@ -1,30 +1,36 @@
-const { Router } = require('express');
+const express = require('express');
 
-const pageRouter = new Router();
+const app = new express();
 
-pageRouter.get('/', (req, res) => 
+app.route('/').get((req, res) =>
 {
     res.render('home', {});
 });
 
-pageRouter.get('/dashboard', (req, res) => 
+app.route('/dashboard').get((req, res) =>
 {
     res.render('dashboard', {});
 });
 
-pageRouter.get('/login', (req, res) => 
+app.route('/login').get((req, res) =>
 {
     res.render('login', {});
+}).post((req, res) =>
+{
+    res.send('POST request for login');
 });
 
-pageRouter.get('/logout', (req, res) => 
+app.route('/logout').get((req, res) =>
 {
     res.render('home', {});
 });
 
-pageRouter.get('/register', (req, res) => 
+app.route('/register').get((req, res) =>
 {
     res.render('register', {});
+}).post((req, res) =>
+{
+    res.send('POST request for register');
 });
 
-module.exports = pageRouter;
+module.exports = app;
