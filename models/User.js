@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class User extends Model {}
+class User extends Model {};
 
 User.init(
   {
@@ -13,7 +13,12 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_name:
+    userName:
+    {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userPass:
     {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,4 +33,4 @@ User.init(
   }
 );
 
-module.exports = Category;
+module.exports = User;

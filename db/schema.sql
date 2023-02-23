@@ -6,27 +6,28 @@ CREATE DATABASE techblog_db;
 USE techblog_db;
 
 CREATE TABLE
-  users
-  (
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    user_name VARCHAR(255) NOT NULL
-  );
+users
+(
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  userName VARCHAR(255) NOT NULL,
+  userPass VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE
   posts
   (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    post_title VARCHAR(255) NOT NULL,
-    post_content TEXT NOT NULL,
-    post_user INTEGER NOT NULL,
-    CONSTRAINT post_fk0 FOREIGN KEY (post_user) REFERENCES users(id)
+    postTitle VARCHAR(255) NOT NULL,
+    postContent TEXT NOT NULL,
+    postUser INTEGER NOT NULL,
+    FOREIGN KEY (post_user) REFERENCES users(user_id)
   );
 
 CREATE TABLE
   comments
   (
     id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    comment_content TEXT NOT NULL,
-    comment_post INTEGER NOT NULL,
-    CONSTRAINT comment_fk0 FOREIGN KEY (comment_post) REFERENCES posts(id)
+    commentContent TEXT NOT NULL,
+    commentPost INTEGER NOT NULL,
+    FOREIGN KEY (comment_post) REFERENCES posts(post_id)
   );
