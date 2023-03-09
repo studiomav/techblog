@@ -1,36 +1,15 @@
-const express = require('express');
+const router = require('express').Router();
+const apiRoutes = require('./api');
+const homeRoutes = require('./homeRoutes.js');
+const dashboardRoutes = require('./dashboardRoutes.js');
 
-const app = new express();
+router.use('/api', apiRoutes);
+router.use('/', homeRoutes);
+router.use('/dashboard', dashboardRoutes);
 
-app.route('/').get((req, res) =>
+router.use((req, res) =>
 {
-    res.render('home', {});
+  res.status(404).end();
 });
 
-app.route('/dashboard').get((req, res) =>
-{
-    res.render('dashboard', {});
-});
-
-app.route('/login').get((req, res) =>
-{
-    res.render('login', {});
-}).post((req, res) =>
-{
-    res.send('POST request for login');
-});
-
-app.route('/logout').get((req, res) =>
-{
-    res.render('home', {});
-});
-
-app.route('/register').get((req, res) =>
-{
-    res.render('register', {});
-}).post((req, res) =>
-{
-    res.send('POST request for register');
-});
-
-module.exports = app;
+module.exports = router;

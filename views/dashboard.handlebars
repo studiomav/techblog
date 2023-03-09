@@ -1,1 +1,20 @@
-{{> header}}
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <a href="/dashboard/create/"><button>create post</button></a>
+    </div>
+    <div class="col">
+      <h2 class="title pb-4">Dashboard</h2>
+      <hr>
+      {{#if posts.length}}
+      {{#each posts as |post|}}
+      {{> postInfo post}}
+      <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">Edit</button></a>
+    {{/each}}
+    {{else}}
+    <h6 class="pb-4 has-text-centered is-italic">No posts.</h6>
+    {{/if}}
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

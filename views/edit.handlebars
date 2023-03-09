@@ -1,0 +1,28 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h2 class="title pb-4">Edit Post</h2>
+            <hr>
+            <form class="edit-post-form">
+                <div>
+                    <input class="input rounded-pill" name="post-title" type="text" value="{{post.title}}" />
+                </div>
+                <div>
+                    <textarea cols="40" rows="10" class="textarea" name="post-content"
+                        type="text">{{post.post_content}}</textarea>
+                </div>
+                <div class="is-pulled-right">
+                    posted on {{post.created_at}}
+                    |
+                    <a href="/post/{{post.id}}">{{post.comments.length}} comments</a>
+                </div>
+                <button type="submit" class="button is-success">save post</button>
+                <button id="delete-post-btn" type="button" class="button">delete post</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<script src="/js/editPost.js"></script>
+<script src="/js/deletePost.js"></script>
